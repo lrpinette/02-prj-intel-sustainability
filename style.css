@@ -1,1 +1,161 @@
-/* Add your CSS here */
+/* General reset for margin and padding */
+body, h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set an ombre effect for the header background */
+header {
+  background: linear-gradient(to bottom, #0071c5, #005a9c); /* Intel blue fading to a darker shade */
+  color: white; /* Contrast for text */
+  text-align: center; /* Center align text and logo */
+  padding: 20px; /* Add spacing inside the header */
+}
+
+/* Style the Intel logo */
+header img {
+  width: 150px; /* Set a reasonable size for the logo */
+  margin-bottom: 10px; /* Add space below the logo */
+}
+
+/* Style the main headline */
+header h1 {
+  font-size: 2.5rem; /* Increase font size for prominence */
+  margin-bottom: 20px; /* Add extra space below the headline */
+  position: relative; /* Enable positioning for the line */
+}
+
+/* Add a blue line between the headline and the paragraph */
+header h1::after {
+  content: ""; /* Add an empty content block for the line */
+  display: block; /* Make it a block element */
+  width: 80px; /* Increase the width of the line */
+  height: 4px; /* Set the height of the line */
+  background-color: #00C7FD; /* Intel blue */
+  margin: 20px auto 0; /* Add more space above the line and center it */
+}
+
+/* Style the subheading/description */
+header p {
+  font-size: 1.2rem; /* Increase font size for better readability */
+  line-height: 1.6; /* Adjust line height for improved spacing */
+  max-width: 600px; /* Limit width for better layout */
+  margin: 0 auto; /* Center the text block */
+}
+
+/* Limit the visible timeline cards */
+section {
+  display: flex; /* Use flexbox to align cards horizontally */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  gap: 20px; /* Add space between cards */
+  padding: 20px; /* Add padding around the section */
+  max-width: 1160px; /* Increase width to fit 4 cards with gaps */
+  margin: 0 auto; /* Center the section on the page */
+  scroll-snap-type: x mandatory; /* Enable smooth scrolling between cards */
+  scroll-behavior: smooth; /* Add smooth scrolling effect */
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+/* Completely hide the scroll bar for WebKit browsers */
+section::-webkit-scrollbar {
+  display: none;
+}
+
+/* Show the scroll bar when hovering over the section */
+section:hover {
+  scrollbar-width: auto; /* For Firefox */
+  -ms-overflow-style: auto; /* For Internet Explorer and Edge */
+}
+
+/* Show the scroll bar for WebKit browsers on hover */
+section:hover::-webkit-scrollbar {
+  display: block;
+}
+
+/* Ensure each card snaps into place when scrolling */
+section div {
+  flex: 0 0 auto; /* Prevent cards from shrinking or growing */
+  width: 250px; /* Set a fixed width for cards */
+  background-color: #f9f9f9; /* Light background for contrast */
+  border: 1px solid #ddd; /* Add a border for definition */
+  border-radius: 8px; /* Slightly round the corners */
+  padding: 15px; /* Add padding inside the cards */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  position: relative; /* Enable positioning for overlay */
+  overflow: hidden; /* Hide content that overflows the card */
+  scroll-snap-align: start; /* Align cards to the start of the viewport */
+}
+
+/* Style card headings */
+section div h2 {
+  font-size: 1.5rem; /* Make year prominent */
+  color: #0071c5; /* Intel blue for emphasis */
+  margin-bottom: 10px; /* Add space below the year */
+}
+
+section div h3 {
+  font-size: 1.2rem; /* Slightly smaller for subheading */
+  margin-bottom: 10px; /* Add space below the subheading */
+}
+
+/* Adjust card images to fit properly */
+section div img {
+  width: 100%; /* Make images responsive to card width */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensure the image covers the available space */
+  border-radius: 5px; /* Slightly round the image corners */
+  margin-bottom: 10px; /* Add space below the image */
+}
+
+/* Style card text */
+section div p {
+  display: block; /* Ensure the description is always present */
+  position: absolute; /* Position it over the card */
+  bottom: 0; /* Align it to the bottom */
+  left: 0; /* Align it to the left */
+  width: 100%; /* Cover the full width of the card */
+  background-color: rgba(0, 113, 197, 0.8); /* Semi-transparent Intel blue */
+  color: white; /* White text for contrast */
+  padding: 10px 10px 10px 10px; /* Add padding inside the overlay */
+  font-size: 0.9rem; /* Keep font size consistent */
+  line-height: 1.4; /* Improve readability */
+  transform: translateY(100%); /* Hide the overlay initially */
+  transition: transform 0.3s ease; /* Smooth transition for hover effect */
+  box-sizing: border-box; /* Include padding in the element's width */
+}
+
+/* Show the overlay on hover */
+section div:hover p {
+  transform: translateY(0); /* Slide the overlay into view */
+}
+
+/* Style the message below the timeline */
+section + p {
+  text-align: center; /* Center the text */
+  padding-top: 10px; /* Add padding above the message */
+  font-size: 1rem; /* Keep the font size readable */
+  color: #555; /* Use a subtle color for the text */
+}
+
+/* Media query for small screens */
+@media (max-width: 600px) {
+  section {
+    flex-direction: column; /* Stack cards vertically */
+    overflow-x: visible; /* Disable horizontal scrolling */
+    gap: 15px; /* Adjust spacing between cards */
+  }
+
+  section div {
+    width: 100%; /* Make cards take full width */
+  }
+
+  header h1 {
+    font-size: 2rem; /* Reduce font size for the headline */
+  }
+
+  header p {
+    font-size: 1rem; /* Reduce font size for the subheading */
+    line-height: 1.4; /* Adjust line height for better spacing */
+  }
+}
